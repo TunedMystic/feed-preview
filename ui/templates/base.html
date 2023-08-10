@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAENJREFUOE9jFBDTrvvP9L+a4T8DGwMpgJHhF+M/xlZGfgmtnyRrhlkEMoRfXOs/KRajqx01gIFhNAyGSRhQmpkozc4Aa4Aj960gEOkAAAAASUVORK5CYII="/>
+    <link rel="stylesheet" href="{{site_url}}/static/css/style.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <title>{{title}}</title>
+
+    {% if app_error %}
+        <meta name="robots" content="noindex, follow">
+        <meta property="og:site_name" content="{{site_name}}"/>
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:title" content="{{title}}"/>
+        <meta name="title" content="{{title}}"/>
+    {% else %}
+        <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
+
+        <link rel="canonical" href="{{page_url}}">
+        <meta name="title" content="{{title}}"/>
+        <meta name="description" content="{{description}}"/>
+
+        <!-- The required open graph tags -->
+        <meta property="og:site_name" content="{{site_name}}"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="{{title}}"/>
+        <meta property="og:description" content="{{description}}"/>
+        <meta property="og:url" content="{{page_url}}"/>
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:image" content="{{site_url}}{{image.url}}"/>
+        <meta property="og:image:alt" content="{{image.alt}}"/>
+        <meta property="og:image:height" content="{{image.height}}"/>
+        <meta property="og:image:secure_url" content="{{site_url}}{{image.url}}"/>
+        <meta property="og:image:type" content="image/{{image.type}}"/>
+        <meta property="og:image:width" content="{{image.width}}"/>
+
+        <!-- The open graph tags for twitter -->
+        <meta property="twitter:title" content="{{title}}"/>
+        <meta property="twitter:description" content="{{description}}"/>
+        <meta property="twitter:image" content="{{site_url}}{{image.url}}"/>
+        <meta property="twitter:card" content="summary_large_image"/>
+    {% endif %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

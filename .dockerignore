@@ -1,0 +1,37 @@
+# Python Byte-compiled / optimized / DLL files
+**/__pycache__
+**/*.pyc
+
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+
+# Database stuff:
+*.sqlite3-journal
+
+
+# Logs
+logs
+**/*.log
+
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+
+# Misc
+.dockerignore
+.DS_Store
+.git
+.gitignore
+.misc
+.vscode
+docker-compose*
+Dockerfile
+bin/

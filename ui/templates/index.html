@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="mt-6"></div>
+
+<header class="max-w-2xl w-full mx-auto">
+    <div class="px-4 flex flex-col justify-center items-center space-y-2">
+        <p class="text-lg text-slate-700">{{heading}}</p>
+    </div>
+</header>
+
+
+
+<div class="mt-6"></div>
+
+
+
+<div class="max-w-xl w-full mx-auto">
+    <div class="p-4 space-y-3">
+        <h3 class="flex justify-center text-2xl font-bold text-teal-600">1. Enter a social embed URL</h3>
+
+        <div class="w-full p-4 bg-slate-50 border border-slate-200 rounded">
+            <form class="w-full flex flex-col justify-center items-center space-y-4" action="{{url_for('index')}}" method="POST">
+                <input class="w-full rounded border border-slate-300 h-14 px-3" name="embed_url" type="text" placeholder="https://instagram.com/p/CsMAdb4NNNP/" value="{{ec.url}}">
+                {% if ec.error %}
+                    <div class="pl-1 w-full text-left text-sm text-rose-700">{{ec.error}}</div>
+                {% endif %}
+                <button class="w-full h-14 rounded text-white flex items-center justify-center bg-blue-800 hover:bg-blue-700 transition-colors duration-100" type="submit">Preview Feed</button>
+            </form>
+        </div>
+
+        <div class="w-full px-4 flex flex-col items-center justify-center space-y-1">
+            <p class="text-sm text-slate-700">Supports <strong>instagram</strong>, <strong>youtube</strong> and <strong>twitter</strong> embeds:</p>
+            <p><span class="opacity-60 text-blue-700 text-sm font-mono">https://instagram.com/p/CsMAdb4NNNP</span></p>
+            <p><span class="opacity-60 text-blue-700 text-sm font-mono">https://youtube.com/watch?v=CvQ7e6yUtnw</span></p>
+            <p><span class="opacity-60 text-blue-700 text-sm font-mono">https://twitter.com/golang/status/1688934360731332608</span></p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="mt-6"></div>
+
+
+
+<div class="max-w-xl w-full mx-auto">
+    <div class="p-4 space-y-3">
+        <h3 class="flex justify-center text-2xl font-bold text-teal-600">2. Preview the Embed within an RSS Feed</h3>
+
+        <div class="w-full text-sm px-4 py-3 bg-slate-50 border border-slate-200 rounded">
+            <pre><code class="language-xml">{{ec.output()}}</code></pre>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="mt-6"></div>
+
+
+{% if ec.html %}
+<div class="max-w-xl w-full mx-auto">
+    <div class="p-4 space-y-3">
+        <h3 class="flex justify-center text-2xl font-bold text-teal-600">3. Preview the Embed HTML</h3>
+
+        <div class="flex justify-center">
+            {{ec.html|safe}}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+<div class="mt-6"></div>
+
+
+<div class="max-w-xl w-full mx-auto">
+
+    <hr class="my-5">
+
+    <div class="p-4 space-y-5 text-slate-800">
+        <h3 class="text-sky-700 text-xl font-bold">About Feed Preview</h3>
+        <p>This microsite is a small utility that helps to preview social embeds within RSS Feeds.</p>
+        <p>Simply provide the URL of the desired social media content, and our microsite handles the embed retrieval and the RSS feed generation.</p>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="p-4 space-y-5 text-slate-800">
+        <h3 class="text-sky-700 text-xl font-bold">What is a social embed in an XML feed?</h3>
+        <p>A social embed in an XML feed refers to the integration of social media content, such as posts, images, or videos, directly into an XML feed.</p>
+        <p>This allows you to preview and display social media content seamlessly within your feed.</p>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="p-4 space-y-5 text-slate-800">
+        <h3 class="text-sky-700 text-xl font-bold">What Social embeds are supported?</h3>
+        <p>We support <strong>Instagram</strong> urls, and use Facebook's Graph API for embed retrieval <em class="text-slate-500">(instagram <span class="px-1 bg-slate-100 rounded">oembed_read</span> permissions)</em>.</p>
+        <p>We support <strong>Twitter</strong> urls, and use the Twitter API for embed retrieval.</p>
+        <p>We support <strong>YouTube</strong> urls, and use the YouTube API for embed retrieval.</p>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="p-4 space-y-5 text-slate-800">
+        <h3 id="privacy-policy" class="text-sky-700 text-xl font-bold">Privacy Policy</h3>
+        <p>This microsite is dedicated to providing you with RSS feed previews without compromising your privacy.</p>
+        <p>We want you to know that we neither collect nor store any of your personal information. Rest assured that your data remains entirely secure.</p>
+        <p>Additionally, our usage of the 'embed_read' permissions from the Instagram API is solely to enhance your experience with RSS feed previews.</p>
+        <p>Your trust matters to us, and we are committed to maintaining the utmost privacy standards.</p>
+    </div>
+</div>
+
+
+<div class="mt-6"></div>
+
+
+<footer class="py-12 space-y-8 bg-slate-900 text-white flex flex-col items-center space-y-1">
+    <div class="flex space-x-6">
+        <a class="hover:underline" href="{{site_url}}">Home</a>
+        <a class="hover:underline" href="{{site_url}}">{{site_name}}</a>
+    </div>
+    <p class="text-sm">&copy {{copyright_year}} {{site_url}}</p>
+</footer>
+
+
+
+{% endblock %}

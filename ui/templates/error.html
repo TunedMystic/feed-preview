@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if app_error == '404' %}
+        <h1>404</h1>
+        <h2>Oops! We couldn't find the page you are looking for.</h2>
+    {% elif app_error == '500' %}
+        <h1>500</h1>
+        <h2>Oops! Something unexpected happened.</h2>
+    {% endif %}
+{% endblock %}
