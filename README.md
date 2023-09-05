@@ -13,7 +13,9 @@ Supports Twitter urls, Instagram posts, and YouTube videos.
 
 <br />
 
-You must have a `facebook_access_token` with the Instagram [`oembed_read`](https://developers.facebook.com/docs/graph-api/reference/instagram-oembed/) permissions.
+For production, you must have a `facebook_access_token` with the Instagram [`oembed_read`](https://developers.facebook.com/docs/graph-api/reference/instagram-oembed/) permissions.
+
+If you do not yet have a `facebook_access_token` this app will provide mock instagram responses instead.
 
 <br />
 
